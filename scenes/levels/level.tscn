@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://dffnwa7xwoams"]
+
+[ext_resource type="Texture2D" uid="uid://c36yvunt10jd3" path="res://graphics/grid/Light/texture_07.png" id="1_6gh7g"]
+[ext_resource type="Script" path="res://mesh_instance_3d_2.gd" id="2_hd3vg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f515a"]
+sky_top_color = Color(0.600237, 0.843172, 0.975248, 1)
+sky_horizon_color = Color(0.700059, 0.753043, 0.777062, 1)
+ground_horizon_color = Color(0.700059, 0.753043, 0.777062, 1)
+
+[sub_resource type="Sky" id="Sky_1h047"]
+sky_material = SubResource("ProceduralSkyMaterial_f515a")
+
+[sub_resource type="Environment" id="Environment_s5gru"]
+background_mode = 2
+sky = SubResource("Sky_1h047")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbk4p"]
+albedo_texture = ExtResource("1_6gh7g")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ww7rj"]
+material = SubResource("StandardMaterial3D_xbk4p")
+size = Vector3(2.605, 0.825, 0.82)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt365"]
+albedo_color = Color(0.746585, 2.00946e-06, 8.66354e-07, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_y3uy2"]
+material = SubResource("StandardMaterial3D_gt365")
+inner_radius = 0.57
+outer_radius = 1.478
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s5gru")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_ww7rj")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+radius = 1.065
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.408248, 0.0898039, -0.908443, -0.765106, 0.509163, 0.394166, 0.497943, 0.855972, -0.139155, 0, 0.908803, 0)
+mesh = SubResource("TorusMesh_y3uy2")
+script = ExtResource("2_hd3vg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849011, 5.06449)
