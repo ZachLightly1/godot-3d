@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://n8r7gwomoi41" path="res://scenes/entities/player/player.tscn" id="1_6fori"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f515a"]
-sky_top_color = Color(0.600237, 0.843172, 0.975248, 1)
+sky_top_color = Color(0.792245, 0.917474, 0.988328, 1)
 sky_horizon_color = Color(0.700059, 0.753043, 0.777062, 1)
 ground_horizon_color = Color(0.700059, 0.753043, 0.777062, 1)
 
