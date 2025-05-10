@@ -35,8 +35,6 @@ func _physics_process(delta: float) -> void:
 	move_logic(delta)
 	jump_logic(delta)
 	ability_logic()
-	if Input.is_action_just_pressed("ui_accept"):
-		hit()
 	move_and_slide()
 	
 func move_logic(delta) -> void:
